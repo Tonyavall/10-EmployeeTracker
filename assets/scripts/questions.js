@@ -16,9 +16,9 @@ const questions = [
         type: 'list',
         name: 'options',
         choices: [
-            {name: 'View All Departments', value: 'departments'},
-            {name: 'View All Roles', value: 'roles'},
-            {name: 'View All Employees', value: 'employees'},
+            {name: 'View All Departments', value: 'departments_list'},
+            {name: 'View All Roles', value: 'roles_list'},
+            {name: 'View All Employees', value: 'employees_list'},
             {name: 'Add a Department', value: 'departments_add'},
             {name: 'Add a Role', value: 'roles_add'},
             {name: 'Add an Employee', value: 'employees_add'},
@@ -27,7 +27,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'departments_name',
+        name: 'department_name',
         message: 'What will the name of the new department be?',
         when: addDepartment
     },

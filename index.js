@@ -1,34 +1,38 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
-const mysql = require('mysql2')
-
-const db = mysql.createConnection(
-    {
-        host: 'localhost',
-        user: 'root',
-        password: '1234',
-        database: 'employees'
-    },
-    console.log('Connected to employees database')
-)
-
-db.query
+const connection = require('./assets/scripts/connection')
 
 const questions = require('./assets/scripts/questions')
+const listTable = require('./assets/scripts/listTable')
+const newDepartment = require('./assets/scripts/newDepartment')
 
 const promptUser = () => inquirer.prompt(questions)
 
 const init = async () => {
-    const answers = await promptUser()
+    const { 
+        options,
+        department_name,
+        roles_name,
+        roles_salary,
+        roles_department,
+        employee_firstname,
+        employee_lastname,
+        employee_role,
+        employee_manager
+    } = await promptUser()
     
-    switch (answers.options) {
-        case 'departments':
+    switch (options) {
+        case 'departments_list':
+            listTable('department')
             break
-        case 'roles':
+        case 'roles_list':
+            listTable('role')
             break
-        case 'employees':
+        case 'employees_list':
+            listTable('employee')
             break
         case 'departments_add':
+            newDepartment(department_name)
             break
         case 'roles_add':
             break
