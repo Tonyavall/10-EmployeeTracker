@@ -72,7 +72,7 @@ const questions = [
         name: 'employee_manager',
         message: 'Who is the manager for this new employee?',
         when: addEmployee
-    },
+    }
 ]
 
 module.exports = questions;
