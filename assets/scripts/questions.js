@@ -11,6 +11,10 @@ const addEmployee = answers => {
     return answers.options === 'employees_add' ? true : false
 }
 
+const updateRole = answers => {
+    return answers.options === 'roles_update' ? true : false
+}
+
 const questions = [
     {
         type: 'list',

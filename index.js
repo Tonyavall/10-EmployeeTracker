@@ -1,10 +1,13 @@
 const inquirer = require('inquirer')
-const fs = require('fs')
-const connection = require('./assets/scripts/connection')
 
+const connection = require('./assets/scripts/connection')
 const questions = require('./assets/scripts/questions')
-const listTable = require('./assets/scripts/listTable')
-const newDepartment = require('./assets/scripts/newDepartment')
+
+const listTable = require('./assets/scripts/options/listTable')
+const newDepartment = require('./assets/scripts/options/newDepartment')
+// const newEmployee = require('./assets/scripts/options/newEmployee')
+// const newRole = require('./assets/scripts/options/newRole')
+const updateRole = require('./assets/scripts/options/updateRole')
 
 const promptUser = () => inquirer.prompt(questions)
 
@@ -32,13 +35,27 @@ const init = async () => {
             listTable('employee')
             break
         case 'departments_add':
-            newDepartment(department_name)
+            newDepartment(
+                department_name
+            )
             break
         case 'roles_add':
+            newRole(
+                roles_name,
+                roles_salary,
+                roles_department
+            )
             break
         case 'employees_add':
+            newEmployee(
+                employee_firstname,
+                employee_lastname,
+                employee_role,
+                employee_manager
+            )
             break
         case 'roles_update':
+            updateRole()
             break
     }
 }
