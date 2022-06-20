@@ -70,7 +70,9 @@ const init = async () => {
             break
 
         case 'roles_update':
-            updateRole()
+            const restart = await updateRole()
+            restart ? init()
+            : (console.log("Goodbye!"), process.exit())
             break
 
         case 'departments_delete':
