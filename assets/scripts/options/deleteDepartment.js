@@ -4,21 +4,26 @@ const restart = require('./restart');
 
 const deleteDepartment = async () => {
     try {
-        const departmentsList = await connection.query(
+        const departments = await connection.query(
             `SELECT * FROM department`,
         )
-        const { department: userChoice } = await inquirer.prompt([
+        const { department } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'department',
                 message: 'What department would you like to delete?',
-                choices: departmentsList.map(department => ({ name: department.name, value: department.id }))
+                choices: [
+                    ...departments.map(department => ({ name: department.name, value: department })),
+                    { name: 'Cancel', value: false }
+                ]
             }
         ])
+        if (!department) return restart()
+
         await connection.query(
-            `DELETE FROM department WHERE id = ${userChoice}`
+            `DELETE FROM department WHERE id = ${department.id}`
         )
-        console.log(`Department ${userChoice} has been removed.`)
+        console.log(`Department ${department.name} has been removed.`)
 
         const { deleteMore } = await inquirer.prompt([
             {

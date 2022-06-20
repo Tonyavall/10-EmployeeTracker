@@ -1,7 +1,6 @@
 const inquirer = require('inquirer')
 
-const connection = require('./assets/scripts/connection')
-const questions = require('./assets/scripts/questions')
+const menu = require('./assets/scripts/menu')
 
 const listTable = require('./assets/scripts/options/listTable')
 const newDepartment = require('./assets/scripts/options/newDepartment')
@@ -16,13 +15,7 @@ const deleteRole = require('./assets/scripts/options/deleteRole')
 const promptUser = questions => inquirer.prompt(questions)
 
 const init = async () => {
-    const {
-        options,
-        department_name,
-        roles_name,
-        roles_salary,
-        roles_department,
-    } = await promptUser(questions)
+    const { options } = await promptUser(menu)
 
     switch (options) {
         case '':
@@ -48,49 +41,45 @@ const init = async () => {
             break
 
         case 'departments_add':
-            restart = await newDepartment(
-                department_name
-            )
+            restart = await newDepartment()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'roles_add':
-            newRole(
-                roles_name,
-                roles_salary,
-                roles_department
-            )
+            restart = await newRole()
+            restart ? init()
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'employees_add':
             restart = await newEmployee()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'roles_update':
-            const restart = await updateRole()
+            restart = await updateRole()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'departments_delete':
             restart = await deleteDepartment()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'roles_delete':
             restart = await deleteRole()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
 
         case 'employees_delete':
             restart = await deleteEmployee()
             restart ? init()
-            : (console.log("Goodbye!"), process.exit())
+                : (console.log("Goodbye!"), process.exit())
             break
     }
 
