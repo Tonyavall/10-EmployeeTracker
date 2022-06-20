@@ -64,7 +64,9 @@ const init = async () => {
             break
 
         case 'employees_add':
-            newEmployee()
+            restart = await newEmployee()
+            restart ? init()
+            : (console.log("Goodbye!"), process.exit())
             break
 
         case 'roles_update':

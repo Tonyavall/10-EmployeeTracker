@@ -13,14 +13,18 @@ const deleteEmployee = async () => {
                 type: 'list',
                 name: 'employee',
                 message: 'What employee would you like to delete?',
-                choices: employees.map(employee => ({ name: `${employee.first_name} ${employee.last_name}`, value: employee.id }))
+                choices: [
+                    ...employees.map(employee => ({ name: `${employee.first_name} ${employee.last_name}`, value: employee.id })),
+                    {name: 'Cancel', value: false}
+                ]
             }
         ])
+        if (!userChoice) return restart()
 
         await connection.query(
             `DELETE FROM employee WHERE id = ${userChoice}`
         )
-        console.log(`${userChoice} has been delete from employees`)
+        console.log(`${userChoice.first_name} ${userChoice.last_name} has been delete from employees`)
         
         const { deleteMore } = await inquirer.prompt([
             {
