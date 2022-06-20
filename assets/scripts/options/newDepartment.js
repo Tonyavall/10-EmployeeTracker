@@ -1,16 +1,16 @@
 const connection = require('../connection')
+const restart = require('./restart')
 
-const newDepartment = depName => {
-    connection.query(
-        `INSERT INTO department (name) VALUES ("${depName}")`,
-        (err, result) => {
-            if (err) {
-                return console.log(err.message)
-            }
-            console.log(`Number of affect rows: ${result.affectedRows}`)
-        }
-        // List resulting table here
-    )
+const newDepartment = async depName => {
+    try {
+        await connection.query(
+            `INSERT INTO department (name) VALUES ("${depName}")`
+        )
+        console.log(`${depName} has been added to departments.`)
+    } catch (err) {
+        console.log(err)
+    }
+    return restart()
 }
 
 module.exports = newDepartment;

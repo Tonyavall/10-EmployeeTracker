@@ -1,4 +1,5 @@
-const mysql = require('mysql2')
+const mysql = require('mysql2');
+const { promisify } = require("util");
 
 const connection = mysql.createConnection(
     {
@@ -9,5 +10,7 @@ const connection = mysql.createConnection(
     },
     console.log('Connected to employees database')
 )
+
+connection.query = promisify(connection.query)
 
 module.exports = connection;

@@ -7,14 +7,6 @@ const addRole = answers => {
     return answers.options === 'roles_add' ? true : false
 }
 
-const addEmployee = answers => {
-    return answers.options === 'employees_add' ? true : false
-}
-
-const updateRole = answers => {
-    return answers.options === 'roles_update' ? true : false
-}
-
 const questions = [
     {
         type: 'list',
@@ -26,7 +18,11 @@ const questions = [
             {name: 'Add a Department', value: 'departments_add'},
             {name: 'Add a Role', value: 'roles_add'},
             {name: 'Add an Employee', value: 'employees_add'},
-            {name: 'Update an Employee Role', value: 'roles_update'}
+            {name: 'Update an Employee Role', value: 'roles_update'},
+            {name: 'Delete a Department', value: 'departments_delete'},
+            {name: 'Delete a Role', value: 'roles_delete'},
+            {name: 'Delete an Employee', value: 'employees_delete'},
+            {name: 'Cancel', value: ''}
         ],
     },
     {
@@ -52,30 +48,6 @@ const questions = [
         name: 'roles_department',
         message: 'What is the department for the role?',
         when: addRole
-    },
-    {
-        type: 'input',
-        name: 'employee_firstname',
-        message: 'What is the first name of the new employee?',
-        when: addEmployee
-    },
-    {
-        type: 'input',
-        name: 'employee_lastname',
-        message: 'What is the last name of the new employee?',
-        when: addEmployee
-    },
-    {
-        type: 'input',
-        name: 'employee_role',
-        message: 'What is the role of the new employee?',
-        when: addEmployee
-    },
-    {
-        type: 'input',
-        name: 'employee_manager',
-        message: 'Who is the manager for this new employee?',
-        when: addEmployee
     }
 ]
 
