@@ -8,7 +8,7 @@ const newEmployee = async (firstName, lastName, role, manager) => {
     const managers = await connection.query(
         `SELECT * FROM employee`
     )
-    console.log(managers)
+
     const {
         employee_firstname,
         employee_lastname,

@@ -16,7 +16,7 @@ const deleteDepartment = async () => {
             }
         ])
         await connection.query(
-            `DELETE FROM department where id = ${userChoice}`
+            `DELETE FROM department WHERE id = ${userChoice}`
         )
         console.log(`Department ${userChoice} has been removed.`)
 

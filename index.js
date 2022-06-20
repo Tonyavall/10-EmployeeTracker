@@ -9,6 +9,9 @@ const newEmployee = require('./assets/scripts/options/newEmployee')
 const newRole = require('./assets/scripts/options/newRole')
 const updateRole = require('./assets/scripts/options/updateRole')
 const deleteDepartment = require('./assets/scripts/options/deleteDepartment')
+const deleteEmployee = require('./assets/scripts/options/deleteEmployee')
+const deleteRole = require('./assets/scripts/options/deleteRole')
+
 
 const promptUser = questions => inquirer.prompt(questions)
 
@@ -73,14 +76,17 @@ const init = async () => {
             restart ? init()
             : (console.log("Goodbye!"), process.exit())
             break
-            break
 
         case 'roles_delete':
-            deleteRole()
+            restart = await deleteRole()
+            restart ? init()
+            : (console.log("Goodbye!"), process.exit())
             break
 
         case 'employees_delete':
-            deleteEmployee()
+            restart = await deleteEmployee()
+            restart ? init()
+            : (console.log("Goodbye!"), process.exit())
             break
     }
 
