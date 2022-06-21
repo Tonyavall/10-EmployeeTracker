@@ -1,5 +1,5 @@
-const connection = require('../connection')
-const restart = require('./restart');
+const connection = require('../../connection')
+const restart = require('../restart');
 
 const listTable = async listName => {
     try {

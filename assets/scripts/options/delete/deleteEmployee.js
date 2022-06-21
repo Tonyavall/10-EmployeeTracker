@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const connection = require('../connection')
-const restart = require('./restart');
+const connection = require('../../connection')
+const restart = require('../restart');
 
 const deleteEmployee = async () => {
     try {
@@ -14,7 +14,7 @@ const deleteEmployee = async () => {
                 name: 'employee',
                 message: 'What employee would you like to delete?',
                 choices: [
-                    ...employees.map(employee => ({ name: `${employee.first_name} ${employee.last_name}`, value: employee.id })),
+                    ...employees.map(employee => ({ name: `${employee.first_name} ${employee.last_name}`, value: employee })),
                     { name: 'Cancel', value: false }
                 ]
             }
@@ -22,7 +22,7 @@ const deleteEmployee = async () => {
         if (!employee) return restart()
 
         await connection.query(
-            `DELETE FROM employee WHERE id = ${employee}`
+            `DELETE FROM employee WHERE id = ${employee.id}`
         )
         console.log(`${employee.first_name} ${employee.last_name} has been delete from employees`)
 

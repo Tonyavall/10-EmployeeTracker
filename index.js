@@ -2,17 +2,16 @@ const inquirer = require('inquirer')
 
 const menu = require('./assets/scripts/menu')
 
-const listTable = require('./assets/scripts/options/listTable')
-const newDepartment = require('./assets/scripts/options/newDepartment')
-const newEmployee = require('./assets/scripts/options/newEmployee')
-const newRole = require('./assets/scripts/options/newRole')
+const listTable = require('./assets/scripts/options/list/listTable')
+const newDepartment = require('./assets/scripts/options/add/newDepartment')
+const newEmployee = require('./assets/scripts/options/add/newEmployee')
+const newRole = require('./assets/scripts/options/add/newRole')
 const updateRole = require('./assets/scripts/options/updateRole')
-const deleteDepartment = require('./assets/scripts/options/deleteDepartment')
-const deleteEmployee = require('./assets/scripts/options/deleteEmployee')
-const deleteRole = require('./assets/scripts/options/deleteRole')
+const deleteDepartment = require('./assets/scripts/options/delete/deleteDepartment')
+const deleteEmployee = require('./assets/scripts/options/delete/deleteEmployee')
+const deleteRole = require('./assets/scripts/options/delete/deleteRole')
 
-
-const promptUser = questions => inquirer.prompt(questions)
+const promptUser = () => inquirer.prompt(menu)
 
 const init = async () => {
     const { options } = await promptUser(menu)
@@ -82,7 +81,6 @@ const init = async () => {
                 : (console.log("Goodbye!"), process.exit())
             break
     }
-
 }
 
 init()

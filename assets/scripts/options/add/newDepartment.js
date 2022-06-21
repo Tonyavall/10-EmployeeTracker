@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
-const connection = require('../connection')
-const restart = require('./restart')
+const connection = require('../../connection')
+const restart = require('../restart')
 
 const newDepartment = async () => {
     try {

@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const connection = require('../connection')
-const restart = require('./restart');
+const connection = require('../../connection')
+const restart = require('../restart');
 
 const deleteDepartment = async () => {
     try {
@@ -15,6 +15,15 @@ const deleteDepartment = async () => {
                 choices: [
                     ...departments.map(department => ({ name: department.name, value: department })),
                     { name: 'Cancel', value: false }
+                ]
+            },
+            {
+                type: 'list',
+                name: 'validate',
+                message: 'Are you sure?',
+                choices: [
+                    {name: 'Yes', value: true},
+                    {name: 'Cancel', value: false}
                 ]
             }
         ])

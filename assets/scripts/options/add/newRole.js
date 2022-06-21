@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
-const connection = require('../connection')
-const restart = require('./restart')
+const connection = require('../../connection')
+const restart = require('../restart')
 
 const newRole = async () => {
     try {
@@ -15,9 +15,16 @@ const newRole = async () => {
                 message: 'What will the name of the role be?',
             },
             {
-                type: 'input',
+                type: 'number',
                 name: 'salary',
                 message: `What is the salary for the role?`,
+                validate(res) {
+                    console.log(typeof res)
+                    if (typeof res !== 'number') {
+                        return 'This needs to be a number'
+                    }
+                    return true
+                }
             },
             {
                 type: 'list',

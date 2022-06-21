@@ -15,6 +15,7 @@ const menu = [
             {name: 'Delete an Employee', value: 'employees_delete'},
             {name: 'Cancel', value: ''}
         ],
+        loop: false
     }
 ]
 
