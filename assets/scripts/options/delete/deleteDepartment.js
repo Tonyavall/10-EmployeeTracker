@@ -7,7 +7,7 @@ const deleteDepartment = async () => {
         const departments = await connection.query(
             `SELECT * FROM department`,
         )
-        const { department } = await inquirer.prompt([
+        const { department, validate } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'department',
@@ -24,10 +24,11 @@ const deleteDepartment = async () => {
                 choices: [
                     {name: 'Yes', value: true},
                     {name: 'Cancel', value: false}
-                ]
+                ],
+                when: res => res.department ? true : false
             }
         ])
-        if (!department) return restart()
+        if (!department || !validate) return restart()
 
         await connection.query(
             `DELETE FROM department WHERE id = ${department.id}`

@@ -18,13 +18,6 @@ const newRole = async () => {
                 type: 'number',
                 name: 'salary',
                 message: `What is the salary for the role?`,
-                validate(res) {
-                    console.log(typeof res)
-                    if (typeof res !== 'number') {
-                        return 'This needs to be a number'
-                    }
-                    return true
-                }
             },
             {
                 type: 'list',

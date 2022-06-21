@@ -8,7 +8,7 @@ const deleteRole = async () => {
             `SELECT * FROM role`
         )
         console.log(roles)
-        const { role } = await inquirer.prompt([
+        const { role, validate } = await inquirer.prompt([
             {
                 type: 'list',
                 name: 'role',
@@ -17,9 +17,19 @@ const deleteRole = async () => {
                     ...roles.map(role => ({ name: role.title, value: role })),
                     { name: 'Cancel', value: false }
                 ]
+            },
+            {
+                type: 'list',
+                name: 'validate',
+                message: 'Are you sure?',
+                choices: [
+                    {name: 'Yes', value: true},
+                    {name: 'Cancel', value: false}
+                ],
+                when: res => res.department ? true : false
             }
         ])
-        if (!role) return restart()
+        if (!role || !validate) return restart()
 
         await connection.query(
             `DELETE FROM role WHERE id = ${role.id} `
