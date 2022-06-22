@@ -1,9 +1,7 @@
 const inquirer = require('inquirer');
-const connection = require('../../connection')
 const restart = require('../restart');
 
-const listEmpByDep = require('./listEmpBy/listEmpByDep')
-const listEmpByMan = require('./listEmpBy/listEmpByMan')
+const choices = require('./listEmpBy/listByChoices')
 
 const listEmployees = async () => {
     try {
@@ -21,18 +19,9 @@ const listEmployees = async () => {
         ])
         if (!viewBy) return restart()
 
-        const choices = {
-            'all': async ()=> {
-                const list = await connection.query(
-                    `SELECT * FROM employee`
-                )
-                console.table(list)
-            },
-            'dep': listEmpByDep,
-            'man': listEmpByMan,
-            'default': restart
-        }
-        await (choices[viewBy] || choices['default'])()
+        // Object version of a switch case. Object contains methods.
+        // Param is viewBy
+        await choices[viewBy]()
 
     } catch (err) {
         console.log(err)

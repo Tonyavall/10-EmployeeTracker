@@ -2,7 +2,6 @@ const inquirer = require('inquirer')
 const restart = require('../../restart')
 const connection = require('../../../connection')
 
-
 const listEmpByMan = async () => {
     try {
         const managers = await connection.query(
@@ -16,12 +15,11 @@ const listEmpByMan = async () => {
                 message: 'Please pick a manager.',
                 choices: [
                     ...managers.map(
-                        manager => (
-                            { 
+                        manager =>
+                            ({ 
                                 name: `${manager.first_name} ${manager.last_name}`, 
                                 value: manager 
-                            }
-                        )
+                            })
                     ),
                     { name: 'Cancel', value: false }
                 ]
