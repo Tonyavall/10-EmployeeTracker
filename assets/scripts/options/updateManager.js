@@ -18,10 +18,10 @@ const updateManager = async () => {
                 message: 'Which employees manager would you like to update?',
                 choices: [
                     ...employees.map(
-                        employees =>
+                        employee =>
                         ({
-                            name: `${employees.first_name} ${employees.last_name}`,
-                            value: employees
+                            name: `${employee.first_name} ${employee.last_name}`,
+                            value: employee
                         })
                     ),
                     { name: 'Cancel', value: false }

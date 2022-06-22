@@ -13,6 +13,7 @@ const updateManager = require('./assets/scripts/options/updateManager')
 const deleteDepartment = require('./assets/scripts/options/delete/deleteDepartment')
 const deleteEmployee = require('./assets/scripts/options/delete/deleteEmployee')
 const deleteRole = require('./assets/scripts/options/delete/deleteRole')
+const listDepBudget = require('./assets/scripts/options/list/listDepBudget')
 
 const promptUser = () => inquirer.prompt(menu)
 
@@ -26,16 +27,24 @@ const init = async () => {
 
         case 'departments_list':
             exitHandler(
-                listTable, 
+                listTable,
                 'department',
+                init
+            )
+            break
+
+        case 'departments_budget':
+            exitHandler(
+                listDepBudget,
+                '',
                 init
             )
             break
 
         case 'roles_list':
             exitHandler(
-                listTable, 
-                'role', 
+                listTable,
+                'role',
                 init
             )
             break

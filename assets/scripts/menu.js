@@ -4,6 +4,7 @@ const menu = [
         name: 'options',
         choices: [
             {name: 'View All Departments', value: 'departments_list'},
+            {name: 'View Departments Budget', value: 'departments_budget'},
             {name: 'View All Roles', value: 'roles_list'},
             {name: 'View Employees', value: 'employees_list'},
             {name: 'Add a Department', value: 'departments_add'},
