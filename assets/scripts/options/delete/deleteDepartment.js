@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const connection = require('../../connection')
+const connection = require('../../../../config/connection')
 const restart = require('../restart');
 
 const deleteDepartment = async () => {
