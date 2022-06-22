@@ -1,16 +1,10 @@
 const listEmpByDep = require('../listEmpBy/listEmpByDep')
 const listEmpByMan = require('../listEmpBy/listEmpByMan')
+const listEmpAll = require('./listEmpAll')
 const connection = require('../../../connection')
 
-const listAll = async () => {
-    const list = await connection.query(
-        `SELECT * FROM employee`
-    )
-    console.table(list)
-}
-
 const choices = {
-    'all': listAll,
+    'all': listEmpAll,
     'dep': listEmpByDep,
     'man': listEmpByMan,
 }

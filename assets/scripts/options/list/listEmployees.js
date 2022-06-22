@@ -5,10 +5,10 @@ const choices = require('./listEmpBy/listByChoices')
 
 const listEmployees = async () => {
     try {
-        const { viewBy } = await inquirer.prompt([
+        const { listBy } = await inquirer.prompt([
             {
                 type: 'list',
-                name: 'viewBy',
+                name: 'listBy',
                 choices: [
                     {name: 'View All Employees', value: 'all'},
                     {name: 'View Employees by Department', value: 'dep'},
@@ -17,11 +17,11 @@ const listEmployees = async () => {
                 ]
             }
         ])
-        if (!viewBy) return restart()
+        if (!listBy) return restart()
 
         // Object version of a switch case. Object contains methods.
-        // Param is viewBy
-        await choices[viewBy]()
+        // Variable to check for is listBy
+        await choices[listBy]()
 
     } catch (err) {
         console.log(err)
