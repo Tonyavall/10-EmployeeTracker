@@ -1,3 +1,4 @@
+const inquirer = require('inquirer');
 const connection = require('../../connection')
 const restart = require('../restart');
 

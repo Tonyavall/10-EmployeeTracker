@@ -4,6 +4,7 @@ const menu = require('./assets/scripts/menu')
 const exitHandler = require('./assets/scripts/exitHandler')
 
 const listTable = require('./assets/scripts/options/list/listTable')
+const listEmployees = require('./assets/scripts/options/list/listEmployees')
 const newDepartment = require('./assets/scripts/options/add/newDepartment')
 const newEmployee = require('./assets/scripts/options/add/newEmployee')
 const newRole = require('./assets/scripts/options/add/newRole')
@@ -40,8 +41,8 @@ const init = async () => {
 
         case 'employees_list':
             exitHandler(
-                listTable,
-                'employee',
+                listEmployees,
+                '',
                 init
             )
             break
