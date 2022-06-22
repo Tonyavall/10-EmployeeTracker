@@ -10,6 +10,7 @@ const menu = [
             {name: 'Add a Role', value: 'roles_add'},
             {name: 'Add an Employee', value: 'employees_add'},
             {name: 'Update an Employee Role', value: 'roles_update'},
+            {name: 'Update an Employee Manager', value: 'manager_update'},
             {name: 'Delete a Department', value: 'departments_delete'},
             {name: 'Delete a Role', value: 'roles_delete'},
             {name: 'Delete an Employee', value: 'employees_delete'},

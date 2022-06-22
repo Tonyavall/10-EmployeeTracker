@@ -5,7 +5,7 @@ const connection = require('../../../../../config/connection')
 const listEmpByMan = async () => {
     try {
         const managers = await connection.query(
-            `SELECT * FROM employee WHERE manager_id IS null`
+            `SELECT * FROM employee WHERE manager_id IS NULL`
         )
 
         const { manager } = await inquirer.prompt([

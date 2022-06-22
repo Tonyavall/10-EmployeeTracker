@@ -9,6 +9,7 @@ const newDepartment = require('./assets/scripts/options/add/newDepartment')
 const newEmployee = require('./assets/scripts/options/add/newEmployee')
 const newRole = require('./assets/scripts/options/add/newRole')
 const updateRole = require('./assets/scripts/options/updateRole')
+const updateManager = require('./assets/scripts/options/updateManager')
 const deleteDepartment = require('./assets/scripts/options/delete/deleteDepartment')
 const deleteEmployee = require('./assets/scripts/options/delete/deleteEmployee')
 const deleteRole = require('./assets/scripts/options/delete/deleteRole')
@@ -74,6 +75,14 @@ const init = async () => {
         case 'roles_update':
             exitHandler(
                 updateRole,
+                '',
+                init
+            )
+            break
+
+        case 'manager_update':
+            exitHandler(
+                updateManager,
                 '',
                 init
             )
