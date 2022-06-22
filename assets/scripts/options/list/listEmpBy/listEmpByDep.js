@@ -7,7 +7,7 @@ const listEmpByDep = async () => {
         const departments = await connection.query(
             `SELECT * FROM department`
         )
-
+        
         const { department } = await inquirer.prompt([
             {
                 type: 'list',
@@ -22,7 +22,10 @@ const listEmpByDep = async () => {
         if (!department) return restart()
 
         const list = await connection.query(
-            `SELECT * FROM employee WHERE id = ${department.id}`
+            `SELECT * FROM employee
+                INNER JOIN role ON employee.role_id = role.id
+                INNER JOIN department ON role.department_id = department.id
+            WHERE department_id = ${department.id}`
         )
         console.table(list)
     } catch (err) {
