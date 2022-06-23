@@ -40,10 +40,11 @@ const updateManager = async () => {
                         })
                     ),
                     { name: 'Cancel', value: false }
-                ]
+                ],
+                when: res => res.employee ? true : false
             }
         ])
-        if (!employee || !manager) return restart()
+        if (!employee || manager === false) return restart()
 
         await connection.query(
             `UPDATE employee SET manager_id = ${manager.id} WHERE id = ${employee.id}`
