@@ -27,7 +27,14 @@ const listEmpByDep = async () => {
                 INNER JOIN department ON role.department_id = department.id
             WHERE department_id = ${department.id}`
         )
-        console.table(list)
+        const cleanList = list.map(item => {
+            return {
+                Name: `${item.first_name} ${item.last_name}`,
+                Role: item.title, Salary: item.salary,
+                Department: item.name
+            }
+        })
+        console.table(cleanList)
     } catch (err) {
         console.log(err)
     }
