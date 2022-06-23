@@ -22,7 +22,7 @@ Technologies used includes:
 4. Inquirer
 
 ## Installation
-[![Installation Instructions](./assets/images/tutpreview.png)](https://youtu.be/kir298j1014 "Installation Instructions")
+[![Installation Instructions](./assets/images/tutpreview.png)](https://youtu.be/ULhat61rQbw "Installation Instructions")
 
 ## Project Notes
 1. Need a better, more intuitive UI that makes the app more approachable and easier to read.

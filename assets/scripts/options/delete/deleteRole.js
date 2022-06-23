@@ -7,7 +7,7 @@ const deleteRole = async () => {
         const roles = await connection.query(
             `SELECT * FROM role`
         )
-        console.log(roles)
+
         const { role, validate } = await inquirer.prompt([
             {
                 type: 'list',
