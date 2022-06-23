@@ -29,7 +29,7 @@ const deleteEmployee = async () => {
                 when: res => res.department ? true : false
             }
         ])
-        if (!employee || !validate) return restart()
+        if (!employee || validate === false) return restart()
 
         await connection.query(
             `DELETE FROM employee WHERE id = ${employee.id}`

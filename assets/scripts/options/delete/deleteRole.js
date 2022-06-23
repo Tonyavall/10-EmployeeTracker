@@ -29,7 +29,7 @@ const deleteRole = async () => {
                 when: res => res.department ? true : false
             }
         ])
-        if (!role || !validate) return restart()
+        if (!role || validate === false) return restart()
 
         await connection.query(
             `DELETE FROM role WHERE id = ${role.id} `

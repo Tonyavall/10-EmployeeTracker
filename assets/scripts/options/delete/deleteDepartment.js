@@ -28,7 +28,7 @@ const deleteDepartment = async () => {
                 when: res => res.department ? true : false
             }
         ])
-        if (!department || !validate) return restart()
+        if (!department || validate === false) return restart()
 
         await connection.query(
             `DELETE FROM department WHERE id = ${department.id}`
